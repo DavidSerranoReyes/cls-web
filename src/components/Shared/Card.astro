@@ -1,0 +1,36 @@
+---
+/**
+ * Reusable Card Component
+ */
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  hover?: boolean;
+  class?: string;
+}
+
+const { title, description, image, hover = true, class: className } = Astro.props;
+---
+
+<div
+  class={`
+    bg-[#1a1a1a] border border-[#2a2a2a] overflow-hidden
+    ${hover ? 'hover:border-[#ff6b35] transition-all duration-300' : ''}
+    ${className || ''}
+  `}
+>
+  {image && (
+    <div class="relative overflow-hidden aspect-video">
+      <img src={image} alt={title} class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+    </div>
+  )}
+
+  <div class="p-6">
+    <h3 class="text-xl font-semibold text-white mb-2">{title}</h3>
+    {description && <p class="text-[#b0b0b0] text-sm">{description}</p>}
+    <slot />
+  </div>
+</div>

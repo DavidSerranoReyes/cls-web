@@ -1,0 +1,53 @@
+---
+/**
+ * Reusable Button Component
+ */
+
+type ButtonVariant = 'primary' | 'secondary' | 'tertiary';
+type ButtonSize = 'sm' | 'md' | 'lg';
+
+interface Props {
+  variant?: ButtonVariant;
+  size?: ButtonSize;
+  href?: string;
+  disabled?: boolean;
+  class?: string;
+  type?: 'button' | 'submit' | 'reset';
+}
+
+const {
+  variant = 'primary',
+  size = 'md',
+  href,
+  disabled = false,
+  class: className,
+  type = 'button',
+} = Astro.props;
+
+const baseClasses = 'font-semibold transition-all duration-300 inline-flex items-center justify-center';
+
+const variantClasses = {
+  primary: 'bg-[#ff6b35] hover:bg-[#ffa500] text-black disabled:bg-[#666]',
+  secondary: 'border-2 border-[#ff6b35] text-white hover:bg-[#ff6b35] hover:text-black disabled:border-[#666] disabled:text-[#666]',
+  tertiary: 'text-[#ff6b35] hover:text-[#ffa500] disabled:text-[#666]',
+};
+
+const sizeClasses = {
+  sm: 'px-4 py-2 text-sm',
+  md: 'px-8 py-3 text-base',
+  lg: 'px-8 py-4 text-lg',
+};
+
+const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className || ''}`;
+
+const Element = href ? 'a' : 'button';
+---
+
+<Element
+  href={href}
+  type={!href ? type : undefined}
+  disabled={disabled}
+  class:list={[classes, { 'opacity-50 cursor-not-allowed': disabled }]}
+>
+  <slot />
+</Element>

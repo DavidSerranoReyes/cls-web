@@ -49,6 +49,7 @@ src/
 ## 🚀 Quick Start
 
 ### Prerequisites
+
 - Node.js 18+ (ideally 20+)
 - npm or yarn
 
@@ -78,6 +79,7 @@ The site will be available at `http://localhost:3000`
 ## 🎨 Design System
 
 ### Color Palette
+
 - **Primary Background**: `#0f0f0f` (Deep Black)
 - **Secondary Background**: `#1a1a1a` (Dark Gray)
 - **Accent Color**: `#ff6b35` (Cinematic Orange)
@@ -86,12 +88,14 @@ The site will be available at `http://localhost:3000`
 - **Text Secondary**: `#b0b0b0` (Light Gray)
 
 ### Typography
+
 - **Display Font**: Playfair Display (serif)
 - **Body Font**: Inter (sans-serif)
 
 ## 🌐 Internationalization
 
 The site supports English and Spanish with automatic language detection and URL-based routing:
+
 - `/en` - English version
 - `/es` - Spanish version
 
@@ -100,17 +104,20 @@ Language switcher is available in the header for easy switching.
 ## 📱 Pages
 
 ### Home (`/`)
+
 - Hero section with striking visuals
 - Featured work showcase
 - Call-to-action buttons
 
 ### Portfolio (`/[lang]/portfolio`)
+
 - Grid/masonry layout of projects
 - Filter by category (Commercial, Narrative, Documentary, Music Video)
 - Project preview cards with hover effects
 - Modal project details
 
 ### Bio (`/[lang]/bio`)
+
 - Director biography
 - Profile image
 - Awards and recognition
@@ -118,6 +125,7 @@ Language switcher is available in the header for easy switching.
 - Timeline
 
 ### Contact (`/[lang]/contact`)
+
 - Contact form with validation
 - Social media links
 - Representation information
@@ -126,9 +134,11 @@ Language switcher is available in the header for easy switching.
 ## 🔧 Configuration
 
 ### Tailwind CSS
+
 Dark mode is enabled by default. Configuration available in `tailwind.config.mjs`
 
 ### Astro Config
+
 - Output: Static (SSG)
 - i18n: Configured for `en` and `es` locales
 - React: Islands architecture enabled
@@ -147,6 +157,7 @@ Dark mode is enabled by default. Configuration available in `tailwind.config.mjs
 ## � Deployment
 
 The project is optimized for static deployment on:
+
 - Vercel
 - Netlify
 - GitHub Pages
@@ -158,6 +169,7 @@ Output directory: `dist/`
 ## 📚 References
 
 Design inspiration from:
+
 - [Nicole Goode](https://nicolegoode.com/)
 - [A24 Films](https://a24films.com/)
 
