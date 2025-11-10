@@ -1,0 +1,105 @@
+---
+import Layout from '../../components/Layout.astro';
+import type { Language } from '../../types';
+import { t } from '../../locales';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.params as { lang: Language };
+---
+
+<Layout title={`${t(lang, 'bio.title')} - CLS Films`} lang={lang}>
+  <div class="pt-32 pb-20">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-16">
+      <!-- Bio Section -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
+        <!-- Image -->
+        <div class="flex items-center justify-center">
+          <div class="w-full aspect-square bg-gradient-to-b from-[#1a1a1a] to-[#0f0f0f] border border-[#2a2a2a] overflow-hidden">
+            <div class="w-full h-full bg-gradient-to-br from-[#ff6b35]/20 to-transparent flex items-center justify-center">
+              <span class="text-[#ff6b35] text-xl">{lang === 'en' ? 'Profile Image' : 'Imagen de Perfil'}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bio Content -->
+        <div>
+          <h1 class="text-5xl md:text-6xl font-bold mb-8">
+            <span class="text-transparent bg-gradient-to-r from-[#ff6b35] to-[#ffa500] bg-clip-text">
+              {t(lang, 'bio.title')}
+            </span>
+          </h1>
+
+          <div class="space-y-6 text-[#b0b0b0] text-lg leading-relaxed">
+            <p>
+              {lang === 'en'
+                ? 'A visionary filmmaker with over a decade of experience in crafting compelling visual narratives. Specializing in commercial production, narrative cinema, and documentary storytelling.'
+                : 'Un cineasta visionario con más de una década de experiencia en la creación de narrativas visuales convincentes. Especializado en producción comercial, cine narrativo y narración documental.'}
+            </p>
+            <p>
+              {lang === 'en'
+                ? 'Known for innovative approaches to cinematography and a distinctive visual style that combines technical excellence with artistic depth.'
+                : 'Conocido por enfoques innovadores de cinematografía y un estilo visual distintivo que combina excelencia técnica con profundidad artística.'}
+            </p>
+          </div>
+
+          <a
+            href={`/${lang}/contact`}
+            class="inline-block mt-10 px-8 py-4 bg-[#ff6b35] hover:bg-[#ffa500] text-black font-semibold transition-all duration-300 transform hover:scale-105"
+          >
+            {t(lang, 'contact.title')}
+          </a>
+        </div>
+      </div>
+
+      <!-- Awards Section -->
+      <section class="mb-20">
+        <h2 class="text-4xl font-bold mb-12">
+          <span class="text-transparent bg-gradient-to-r from-[#ff6b35] to-[#ffa500] bg-clip-text">
+            {t(lang, 'bio.awards')}
+          </span>
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {[1, 2, 3, 4].map((i) => (
+            <div class="bg-[#1a1a1a] border border-[#2a2a2a] p-8 hover:border-[#ff6b35] transition-colors duration-300">
+              <h3 class="text-xl font-semibold mb-2">Award Name {i}</h3>
+              <p class="text-[#ff6b35] mb-4">Festival Name • 2024</p>
+              <p class="text-[#b0b0b0]">{lang === 'en' ? 'Award description' : 'Descripción del premio'}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Press Section -->
+      <section>
+        <h2 class="text-4xl font-bold mb-12">
+          <span class="text-transparent bg-gradient-to-r from-[#ff6b35] to-[#ffa500] bg-clip-text">
+            {t(lang, 'bio.press')}
+          </span>
+        </h2>
+
+        <div class="space-y-4">
+          {[1, 2, 3].map((i) => (
+            <a
+              href="#"
+              class="block bg-[#1a1a1a] border border-[#2a2a2a] p-6 hover:border-[#ff6b35] hover:bg-[#ff6b35]/5 transition-all duration-300"
+            >
+              <div class="flex justify-between items-start gap-4">
+                <div>
+                  <h3 class="text-lg font-semibold mb-2">Press Article Title {i}</h3>
+                  <p class="text-[#ff6b35] text-sm">Publication Name • Jan 2024</p>
+                </div>
+                <svg class="w-5 h-5 text-[#ff6b35] flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    </div>
+  </div>
+</Layout>

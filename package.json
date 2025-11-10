@@ -1,5 +1,6 @@
 {
-  "name": "magenta-mercury",
+  "name": "cls-web",
+  "description": "Film Director Portfolio Website - Astro + React + TypeScript",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -9,6 +10,18 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.15.4"
+    "astro": "^5.15.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@astrojs/react": "^3.0.11",
+    "@astrojs/tailwind": "^5.1.0",
+    "tailwindcss": "^3.4.1",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18"
   }
 }

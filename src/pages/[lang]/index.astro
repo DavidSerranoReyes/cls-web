@@ -1,0 +1,15 @@
+---
+import Layout from '../../components/Layout.astro';
+import HeroSection from '../../components/Sections/HeroSection.astro';
+import type { Language } from '../../types';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.params as { lang: Language };
+---
+
+<Layout title="CLS Films - Cinematic Excellence" lang={lang}>
+  <HeroSection lang={lang} />
+</Layout>

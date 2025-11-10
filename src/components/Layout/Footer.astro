@@ -1,0 +1,50 @@
+---
+import type { Language } from '../../types';
+import { t } from '../../locales';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+---
+
+<footer class="bg-black border-t border-[#2a2a2a] py-12 md:py-16">
+  <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-16">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+      <!-- Brand -->
+      <div>
+        <a href={`/${lang}`} class="text-xl font-bold">
+          <span class="text-transparent bg-gradient-to-r from-[#ff6b35] to-[#ffa500] bg-clip-text">CLS</span>
+          <span class="text-white">Films</span>
+        </a>
+        <p class="text-[#b0b0b0] mt-4 text-sm">Cinematic excellence through modern technology</p>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <h3 class="font-semibold mb-4">{lang === 'en' ? 'Navigation' : 'Navegación'}</h3>
+        <ul class="space-y-2 text-[#b0b0b0] text-sm">
+          <li><a href={`/${lang}`} class="hover:text-[#ff6b35] transition-colors">{t(lang, 'nav.home')}</a></li>
+          <li><a href={`/${lang}/portfolio`} class="hover:text-[#ff6b35] transition-colors">{t(lang, 'nav.portfolio')}</a></li>
+          <li><a href={`/${lang}/bio`} class="hover:text-[#ff6b35] transition-colors">{t(lang, 'nav.bio')}</a></li>
+          <li><a href={`/${lang}/contact`} class="hover:text-[#ff6b35] transition-colors">{t(lang, 'nav.contact')}</a></li>
+        </ul>
+      </div>
+
+      <!-- Social -->
+      <div>
+        <h3 class="font-semibold mb-4">{lang === 'en' ? 'Follow' : 'Sígueme'}</h3>
+        <ul class="space-y-2 text-[#b0b0b0] text-sm">
+          <li><a href="#" class="hover:text-[#ff6b35] transition-colors">Instagram</a></li>
+          <li><a href="#" class="hover:text-[#ff6b35] transition-colors">Vimeo</a></li>
+          <li><a href="#" class="hover:text-[#ff6b35] transition-colors">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-[#2a2a2a] pt-8 text-center text-[#b0b0b0] text-sm">
+      <p>{t(lang, 'footer.copyright')}</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,82 @@
+---
+import Layout from '../../components/Layout.astro';
+import type { Language } from '../../types';
+import { t } from '../../locales';
+import ContactForm from '../../components/Sections/ContactForm';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.params as { lang: Language };
+---
+
+<Layout title={`${t(lang, 'contact.title')} - CLS Films`} lang={lang}>
+  <div class="pt-32 pb-20">
+    <div class="max-w-4xl mx-auto px-4 md:px-8 lg:px-16">
+      <h1 class="text-5xl md:text-6xl font-bold mb-4 text-center">
+        <span class="text-transparent bg-gradient-to-r from-[#ff6b35] to-[#ffa500] bg-clip-text">
+          {t(lang, 'contact.title')}
+        </span>
+      </h1>
+
+      <p class="text-center text-[#b0b0b0] text-lg mb-16 max-w-2xl mx-auto">
+        {lang === 'en'
+          ? "Let's discuss your next project or creative collaboration"
+          : 'Hablemos sobre tu próximo proyecto o colaboración creativa'}
+      </p>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-20">
+        <!-- Contact Info -->
+        <div class="lg:col-span-1">
+          <div class="space-y-12">
+            <!-- Email -->
+            <div>
+              <h3 class="text-sm font-semibold text-[#ff6b35] mb-3 uppercase tracking-wider">
+                {lang === 'en' ? 'Email' : 'Correo'}
+              </h3>
+              <p class="text-[#b0b0b0]">hello@clsfilms.com</p>
+            </div>
+
+            <!-- Location -->
+            <div>
+              <h3 class="text-sm font-semibold text-[#ff6b35] mb-3 uppercase tracking-wider">
+                {t(lang, 'contact.location')}
+              </h3>
+              <p class="text-[#b0b0b0]">Barcelona, Spain</p>
+            </div>
+
+            <!-- Social -->
+            <div>
+              <h3 class="text-sm font-semibold text-[#ff6b35] mb-3 uppercase tracking-wider">
+                {lang === 'en' ? 'Follow' : 'Sígueme'}
+              </h3>
+              <ul class="space-y-2">
+                <li>
+                  <a href="#" class="text-[#b0b0b0] hover:text-[#ff6b35] transition-colors duration-300">
+                    Instagram
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="text-[#b0b0b0] hover:text-[#ff6b35] transition-colors duration-300">
+                    Vimeo
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="text-[#b0b0b0] hover:text-[#ff6b35] transition-colors duration-300">
+                    LinkedIn
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="lg:col-span-2">
+          <ContactForm client:load lang={lang} />
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

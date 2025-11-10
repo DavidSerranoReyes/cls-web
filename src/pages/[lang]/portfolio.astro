@@ -1,0 +1,63 @@
+---
+import Layout from '../../components/Layout.astro';
+import type { Language } from '../../types';
+import { t } from '../../locales';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.params as { lang: Language };
+---
+
+<Layout title={`${t(lang, 'portfolio.title')} - CLS Films`} lang={lang}>
+  <div class="pt-32 pb-20">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-16">
+      <h1 class="text-5xl md:text-6xl font-bold mb-4">
+        <span class="text-transparent bg-gradient-to-r from-[#ff6b35] to-[#ffa500] bg-clip-text">
+          {t(lang, 'portfolio.title')}
+        </span>
+      </h1>
+      <p class="text-[#b0b0b0] text-lg mb-12">
+        {lang === 'en'
+          ? 'Explore a diverse collection of cinematic work'
+          : 'Explora una colección diversa de trabajo cinematográfico'}
+      </p>
+
+      <!-- Filter buttons -->
+      <div class="flex flex-wrap gap-3 mb-16">
+        <button class="px-6 py-2 bg-[#ff6b35] text-black font-semibold hover:bg-[#ffa500] transition-colors duration-300">
+          {t(lang, 'portfolio.filter.all')}
+        </button>
+        <button class="px-6 py-2 border border-[#ff6b35] text-white hover:bg-[#ff6b35] hover:text-black transition-colors duration-300">
+          {t(lang, 'portfolio.filter.commercial')}
+        </button>
+        <button class="px-6 py-2 border border-[#ff6b35] text-white hover:bg-[#ff6b35] hover:text-black transition-colors duration-300">
+          {t(lang, 'portfolio.filter.narrative')}
+        </button>
+        <button class="px-6 py-2 border border-[#ff6b35] text-white hover:bg-[#ff6b35] hover:text-black transition-colors duration-300">
+          {t(lang, 'portfolio.filter.documentary')}
+        </button>
+        <button class="px-6 py-2 border border-[#ff6b35] text-white hover:bg-[#ff6b35] hover:text-black transition-colors duration-300">
+          {t(lang, 'portfolio.filter.music')}
+        </button>
+      </div>
+
+      <!-- Projects grid (placeholder) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {[1, 2, 3, 4, 5, 6].map((i) => (
+          <div class="group cursor-pointer">
+            <div class="relative bg-[#1a1a1a] aspect-video overflow-hidden border border-[#2a2a2a] hover:border-[#ff6b35] transition-all duration-300">
+              <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 group-hover:from-[#ff6b35]/20 transition-all duration-300 flex items-end p-6">
+                <div>
+                  <h3 class="text-xl font-semibold text-white">Project {i}</h3>
+                  <p class="text-[#b0b0b0] text-sm mt-2">{lang === 'en' ? 'Commercial' : 'Comercial'}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</Layout>

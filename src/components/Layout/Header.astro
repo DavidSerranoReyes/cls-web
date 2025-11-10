@@ -1,0 +1,40 @@
+---
+import type { Language } from '../../types';
+import { t } from '../../locales';
+import LanguageSwitcher from '../UI/LanguageSwitcher';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+const currentLang = lang === 'en' ? 'English' : 'Español';
+---
+
+<header class="fixed top-0 w-full bg-black/80 backdrop-blur-lg z-50 border-b border-[#2a2a2a]">
+  <nav class="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 py-6 flex justify-between items-center">
+    <a href={`/${lang}`} class="text-2xl font-bold tracking-tighter">
+      <span class="text-transparent bg-gradient-to-r from-[#ff6b35] to-[#ffa500] bg-clip-text">CLS</span>
+      <span class="text-white">Films</span>
+    </a>
+
+    <div class="hidden md:flex items-center gap-12">
+      <a href={`/${lang}`} class="hover:text-[#ff6b35] transition-colors duration-300">
+        {t(lang, 'nav.home')}
+      </a>
+      <a href={`/${lang}/portfolio`} class="hover:text-[#ff6b35] transition-colors duration-300">
+        {t(lang, 'nav.portfolio')}
+      </a>
+      <a href={`/${lang}/bio`} class="hover:text-[#ff6b35] transition-colors duration-300">
+        {t(lang, 'nav.bio')}
+      </a>
+      <a href={`/${lang}/contact`} class="hover:text-[#ff6b35] transition-colors duration-300">
+        {t(lang, 'nav.contact')}
+      </a>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <LanguageSwitcher client:load lang={lang} />
+    </div>
+  </nav>
+</header>
